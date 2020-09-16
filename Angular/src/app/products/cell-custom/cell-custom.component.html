@@ -1,0 +1,4 @@
+
+<button class="btn btn-sm btn-success mx-2" (click)="editProduct()" data-toggle="tooltip" data-placement="top" title="Edit Product" routerLink="/edit_product" *ngIf="loginAs=='admin'">Edit</button>
+<button class="btn btn-sm btn-danger mx-2" (click)="deleteProduct()" data-toggle="tooltip" data-placement="top" title="Delete Product" *ngIf="loginAs=='admin'">Delete</button>
+<button class="btn btn-sm btn-info mx-2" (click)="addToCart(this.param.data)" data-toggle="tooltip" data-placement="top" title="Add to cart" *ngIf="loginAs==='user'">Add To Cart</button>

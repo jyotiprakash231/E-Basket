@@ -1,0 +1,9 @@
+#logo {
+  height: 45px;
+  width: 45px;
+}
+
+
+.capitalize {
+  text-transform: capitalize;
+}

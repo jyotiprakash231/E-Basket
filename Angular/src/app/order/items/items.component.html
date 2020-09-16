@@ -1,0 +1,26 @@
+<div class="container">
+<table class="table my-5">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" *ngIf="loginAs==='admin'">Product Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of itemdata">
+        <th scope="row" *ngIf="loginAs==='admin'">{{obj.product.pid}}</th>
+        <td>{{obj.product.name}}</td>
+        <td>{{obj.product.description}}</td>
+        <td>{{obj.product.price}}</td>
+        <td>{{obj.userQuantity}}</td>
+        <td>{{obj.totalPrice}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary my-4" *ngIf="loginAs==='admin'" routerLink="/orders"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Back</button>
+  <button class="btn btn-primary my-4" *ngIf="loginAs==='user'" routerLink="/userorders"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Back</button>
+</div>

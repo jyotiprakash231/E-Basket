@@ -1,0 +1,48 @@
+
+<!-- <div class="container">
+  <ag-grid-angular
+    style="width: auto; height: 500px;"
+    class="ag-theme-alpine"
+    [animateRows]=true
+    [rowData]="rowData "
+    [columnDefs]="columnDefs"
+    >
+</ag-grid-angular>
+</div> -->
+
+<div class="container">
+  <div>
+    <div class="alert alert-success" *ngIf="success">{{successMessage}}</div>
+    <div class="alert alert-danger" *ngIf="error">{{errorMessage}}</div>
+  </div>
+  <button class="btn btn-primary" routerLink="/add" *ngIf="loginAs=='admin'"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add New Product</button>
+  <table class="table my-2">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of rowData">
+        <th scope="row">{{obj.name}}</th>
+        <td>{{obj.price}}</td>
+        <td>{{obj.quantity}}</td>
+        <td>{{obj.description}}</td>
+        <td>
+          <button class="btn btn-sm btn-success mx-2" (click)="editProduct(obj)" data-toggle="tooltip" data-placement="top" title="Edit Product" routerLink="/edit_product" *ngIf="loginAs=='admin'"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+          <button class="btn btn-sm btn-danger mx-2" (click)="deleteProduct(obj)" data-toggle="tooltip" data-placement="top" title="Delete Product" *ngIf="loginAs=='admin'"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button class="btn btn-primary" (click)="addToCart(obj)" data-toggle="tooltip" data-placement="top" title="Add to cart" *ngIf="loginAs==='user'"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Add to cart</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+

@@ -1,0 +1,47 @@
+
+
+<div class="container my-3">
+    <h3 class="text-center text-primary">Shipping details</h3>
+    <div class="row">
+        <div>
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="error">Order Can't Place</div>
+            <div class="alert alert-success alert-dismissible fade show" *ngIf="success">Order placed Successfully</div>
+          </div>
+        <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+    <form #addCustomer="ngForm" (ngSubmit)="onSubmit(addCustomer)" ngNativeValidate>
+        <div class="form-group">
+            <label for="firstname">Customer Name</label>
+            <input type="text" required #name="ngModel" [class.is-invalid]="name.touched && name.invalid"
+              class="form-control" name="cname" [(ngModel)]="cname" placeholder="Enter your first name">
+            <div class="invalid-feedback" *ngIf="name.touched && name.invalid">* Name must be required
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" #adrs="ngModel" required class="form-control" placeholder="Enter your full address" [class.is-invalid]="adrs.touched && adrs.invalid" name="address" [(ngModel)]="address"  >
+              <div class="invalid-feedback" *ngIf="adrs.touched && adrs.invalid">* Address must be required
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="pin">Pin</label>
+              <input type="text" maxlength="6" minlength="6" placeholder="Enter your pin" pattern="^[0-9]*$"
+               #pinn="ngModel" required class="form-control" name="pin" [class.is-invalid]="pinn.touched && pinn.invalid" [(ngModel)]="pin"  >
+               <div class="invalid-feedback" *ngIf="pinn.touched && pinn.invalid">* Pin must be 6 digit & valid
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="text" #phn="ngModel" required maxlength="10" minlength="10" pattern="^[0-9]*$" class="form-control" [class.is-invalid]="phn.touched && phn.invalid" placeholder="Enter phone number" name="phone" [(ngModel)]="phone"  >
+              <div class="invalid-feedback" *ngIf="phn.touched && phn.invalid">* 10 Digit valid phone no required
+            </div>
+            </div>
+          <button class="btn btn-primary" [disabled]="addCustomer.form.invalid" type="submit" >Place Order</button>
+          <button class="btn btn-danger mx-2" routerLink="/products">Cancel</button>
+      </form>
+    </div>
+
+<div class="col-sm-4"></div>
+    </div>
+</div>
+

@@ -1,0 +1,58 @@
+<h2 class="text-center text-primary my-3">Add New Product</h2>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div>
+        <div class="alert alert-info alert-dismissible fade show" *ngIf="info"><i class="fa fa-spinner fa-pulse fa-fw"></i>&nbsp;{{infoMessage}}</div>
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="error">{{errorMessage}}</div>
+        <div class="alert alert-success alert-dismissible fade show" *ngIf="success">{{successMessage}}</div>
+      </div>
+
+      <form #addProductForm="ngForm" (ngSubmit)="onSubmit();resetFormData(addProductForm) ">
+        <div class="form-group">
+          <label for="pname">Product Name</label>
+          <input type="text" required #name="ngModel" [class.is-invalid]="name.touched && name.invalid"
+            class="form-control" name="name" [(ngModel)]="product.name" placeholder="Enter product name">
+          <div class="invalid-feedback" *ngIf="name.touched && name.invalid">* Pruduct name required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Description">Description</label>
+          <input type="text" required #desc="ngModel" [class.is-invalid]="desc.touched && desc.invalid"
+            class="form-control" name="description" [(ngModel)]="product.description" placeholder="Enter product description">
+          <div class="invalid-feedback" *ngIf="desc.touched && desc.invalid">* Description required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" required #price="ngModel" maxlength="7"
+            pattern="^[0-9]*$" 
+            [class.is-invalid]="price.touched && price.invalid" class="form-control" name="price"
+            [(ngModel)]="product.price" placeholder="Enter price of that product">
+            <div class="invalid-feedback" *ngIf="price.touched && price.invalid">* Price must be a number</div>
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="qty">Quantity</label>
+            <input type="text" required #qty="ngModel" maxlength="2"
+              pattern="^[0-9]*$" 
+              [class.is-invalid]="qty.touched && qty.invalid" class="form-control" name="qty"
+              [(ngModel)]="product.quantity" placeholder="Enter quantity of that product">
+              <div class="invalid-feedback" *ngIf="qty.touched && qty.invalid">* Quantity must be a number</div>
+          </div> -->
+          <input type="hidden" #qty="ngModel" class="form-control" name="qty" [(ngModel)]="product.quantity">
+
+
+        <button [disabled]="addProductForm.form.invalid" class="btn btn-primary ">Add</button>
+        <button class="btn btn-danger mx-2" routerLink="/products">Cancel</button>
+      </form>
+    </div>
+
+
+    <div class="col-sm-4"></div>
+  </div>
+</div>

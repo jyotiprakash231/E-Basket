@@ -1,0 +1,9 @@
+<button class="btn btn-sm btn-primary mx-2" (click)="viewItems()" data-toggle="tooltip" data-placement="top" title="View Ordered Products" routerLink="/orderproducts" *ngIf="loginAs==='admin'"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+<button class="btn btn-sm btn-info mx-2" (click)="editOrder()" data-toggle="tooltip" data-placement="top" title="Edit Order" routerLink="/edit_order" *ngIf="loginAs==='admin'"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+<button class="btn btn-sm btn-success mx-2" (click)="setStatus()" data-toggle="tooltip" data-placement="top" title="Change Order Status" routerLink="/change-status" *ngIf="loginAs==='admin'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+<button class="btn btn-sm btn-danger mx-2" (click)="cancelOrder()" data-toggle="tooltip" data-placement="top" title="Cancle Order" *ngIf="loginAs==='admin'"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+
+<button class="btn btn-sm btn-info mx-2" (click)="orderStatus()" data-toggle="tooltip" data-placement="top" title="Track Order Status" routerLink="/orderstatus" *ngIf="loginAs==='user'"><i class="fa fa-info" aria-hidden="true"></i></button>
+<button class="btn btn-sm btn-primary mx-2" (click)="viewItems()" data-toggle="tooltip" data-placement="top" title="View Ordered Products" routerLink="/orderproducts" *ngIf="loginAs==='user'"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+<button class="btn btn-sm btn-danger mx-2" (click)="cancelOrder()" data-toggle="tooltip" data-placement="top" title="Cancle Order" *ngIf="loginAs==='user'"><i class="fa fa-times" aria-hidden="true"></i></button>

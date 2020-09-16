@@ -1,0 +1,43 @@
+<nav class="navbar navbar-light navbar-expand-sm">
+  <a class="navbar-brand text-info" href="#">
+    <img id="logo" src="assets/logoo.png" class="d-inline-block">&nbsp;&nbsp;E-Basket
+  </a>
+ </nav>
+ <nav class="navbar navbar-light bg-light navbar-expand-sm">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link  mx-2" *ngIf="login.isLoggedIn()" routerLink="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link  mx-2" *ngIf="!login.isLoggedIn()" routerLink="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link  mx-2" *ngIf="!login.isLoggedIn()" routerLink="/registration"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Registration</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" label="product" *ngIf="login.isLoggedIn()" routerLink="/products" ><i class="fa fa-database" aria-hidden="true"></i>&nbsp;Products</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" label="order" *ngIf="login.isLoggedIn() && login.loginAs()==='admin'" routerLink="/orders" ><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Orders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" label="order" *ngIf="login.isLoggedIn() && login.loginAs()==='user'" routerLink="/userorders" ><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Your Orders</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav navbar-right">
+    <li class="nav-item">
+      <a class="nav-link text-info mx-2" *ngIf="login.isLoggedIn()"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{login.loginName()}}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-info mx-2" *ngIf="login.isLoggedIn() && login.loginAs()==='user'" routerLink="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart</a>
+    </li>
+  	<li class="nav-item">
+      <a class="nav-link text-info mx-2" *ngIf="login.isLoggedIn()" routerLink="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a>
+    </li>
+    
+  </ul>
+
+</nav>
+
+
+<router-outlet></router-outlet>

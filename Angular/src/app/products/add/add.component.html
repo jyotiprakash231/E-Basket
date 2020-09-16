@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Product</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <form #addForm="ngForm" (ngSubmit)="onSubmit(addForm);modal.close()">
+
+      <div class="form-group">
+        <label for="name">Product Name:</label>
+        <input type="text" #name="ngModel" required class="form-control"  placeholder="Enter product name" name="name" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" placeholder="Enter price of the product" name="price" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="qty">Quantity:</label>
+        <input type="number" class="form-control" placeholder="Enter quantities" name="quantity" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="desc">Description:</label>
+        <input type="text" class="form-control"  placeholder="about the product" name="description" ngModel>
+      </div>
+
+        <button type="submit" class="btn btn-info mx-1" >Submit</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close()">Close</button>
+    </form>
+  </div>
+
+
+
+</ng-template>
+
+<button class="btn btn-primary my-3" *ngIf="loginAs==='admin'" (click)="open(content)">Add Product</button>

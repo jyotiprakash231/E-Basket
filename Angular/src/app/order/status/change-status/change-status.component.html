@@ -1,0 +1,68 @@
+<h2 class="text-center text-primary my-3">Update Status</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <h4 class="text-info text-center">Order ID <h5 class="text-secondary">{{oid}}</h5>  </h4>
+                <h4 class="text-info text-center">Total Amount<h5 class="text-secondary">{{amount}}</h5></h4>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div>
+                <h4 class="text-info text-center">Date<h5 class="text-secondary">{{date}}</h5></h4>
+                <h4 class="text-info text-center">Time<h5 class="text-secondary">{{time}}</h5></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-info text-center">This orders current staus </h4>
+            <h2 class="text-center text-warning">{{ currentStatus }}</h2>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table my-2">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of orderStatus">
+                <th scope="row">{{obj.date}}</th>
+                <td>{{obj.time}}</td>
+                <td>{{obj.status}}</td>
+              </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary my-2" routerLink="/orders">Back</button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+                <select class="form-control" required #status="ngModel" [class.is-invalid]="status.touched && status.invalid" name="status"  ngModel>
+                    <option *ngFor="let status of statuses">{{status}}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="status.touched && status.invalid">* choose status</div>
+                <button [disabled]="form.form.invalid" class="btn btn-primary my-2">Update Status</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+
+<div class="container md-3 text-center">
+<h1 class="text-center text-primary my-5">Hi, {{ name }}<span *ngIf="loginAs==='admin'">(Admin)</span></h1>
+
+<h2 class="text-center text-success my-5">Welcome to E-Basket</h2>
+
+
+<button class="btn btn-info my-3 text-center" routerLink="/products" *ngIf="loginAs==='user'"> Shopping
+ </button>
+
+</div>
+
